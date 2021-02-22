@@ -1,0 +1,36 @@
+#!/bin/bash
+
+GTK_PID=$(pgrep gtkwave)
+if [ ! -z "{$GTK_PID}" ]
+then
+	echo "Killing gtkwave"
+	kill $GTK_PID
+fi
+
+# exists when command fails
+set -e
+
+echo "Verifying vhd syntax"
+ghdl -s *.vhd
+
+
+echo "Analysing vhdl"
+ghdl -a *.vhd
+
+echo "Compiling vhdl testbench"
+ghdl -e acc_proc_tb
+
+
+echo "Elaborating testbench UNIT"
+ghdl -e acc_proc_tb
+
+echo "Running simulation"
+ghdl -r acc_proc_tb --wave=new.ghw --stop-time=1300ns 
+
+echo "Cleaning files"
+ghdl --clean
+rm *.cf
+
+echo "Opening gtkwave"
+gtkwave simulation_wave.gtkw &>/dev/null &
+echo "Done"
