@@ -6,13 +6,22 @@ adr:
 .text
 .globl calcul_1
 
-calcul_1 :
-
-#########
-#votre code ici
-#########
-   
+calcul_1:
+   movl $3, %eax
+   movl $17, %ecx
+   movl $0, %edx
+boucle:
+   movl %eax, adr(%edx)
+   addl adr(%edx), %eax
+   addl adr(%edx), %eax
+   addl $4, %edx
+   loop boucle
+fin:
+   movl %eax, adr(%edx)
    ret
+
+
+   
 
 
 

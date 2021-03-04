@@ -8,15 +8,33 @@ adr_res:
 .text     
 .globl calcul_3
 
-calcul_3 :
-pushl %ebx
 
-#########
-#votre code ici
-#########
+
+add_256 :
+     movl $64, %ecx
+     movl $0, %ebx
+boucle: 
+     movl adr_x(%ebx), %eax
+     ADCl adr_y(%ebx), %eax
+     movl %eax, adr_z(%ebx)
+     INC %ebx
+     INC %ebx
+     INC %ebx
+     INC %ebx
+     loop boucle
+calcul_3 :
+     pushl %ebx
+     movl $3, adr_res(%ebx)
+init :
+     addl $4, %ebx
+     movl $63, %ecx
+     movl $0, adr_res(%ebx)
+     loop init
+
+
    
-popl %ebx
-ret
+     popl %ebx
+     ret
 
 
 
