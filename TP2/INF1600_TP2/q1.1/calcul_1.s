@@ -7,23 +7,16 @@ adr:
 .globl calcul_1
 
 calcul_1:
-   movl $3, %eax
-   movl $17, %ecx
-   movl $0, %edx
+   movl $3, %eax           # Initialisation de la valeur initiale
+   movl $17, %ecx          # Initialisation du nombre d'itération
+   movl $0, %edx           # Initialisation du pointeur d'adresse
 boucle:
-   movl %eax, adr(%edx)
-   addl adr(%edx), %eax
-   addl adr(%edx), %eax
-   addl $4, %edx
-   loop boucle
+   movl %eax, adr(%edx)    # Sauvegarde de la valeur initiale
+   addl adr(%edx), %eax    # Ajout pour la première fois de la valeur initiale
+   addl adr(%edx), %eax    # Ajout pour la deuxième fois de la valeur initia
+   addl $4, %edx           # Déplacement du pointeur pour aller au prochain nombre
+   loop boucle             # Permet de boucler selon le nombre d'itération
 fin:
-   movl %eax, adr(%edx)
+   movl %eax, adr(%edx)    # Sauvegarde de la dernière valeur
    ret
-
-
    
-
-
-
-   
-
