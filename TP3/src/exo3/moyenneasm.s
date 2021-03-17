@@ -1,7 +1,7 @@
 .data
         factor: .float 10.0 /* utilisez ca pour diviser par 10*/
 
-
+.text
 .globl	_ZN8Etudiant10moyenneasmEv
 
 _ZN8Etudiant10moyenneasmEv :
