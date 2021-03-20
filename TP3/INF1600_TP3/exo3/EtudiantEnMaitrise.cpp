@@ -29,7 +29,7 @@ void EtudiantEnMaitrise::affichage () {
 }
 
 int EtudiantEnMaitrise::admiscpp() { 
-    if ((moyennecpp() >= 10) && (note_memoire >=10))
+    if ((moyennecpp() >= 10) && (note_memoire >= 10))
         return (1); 
     else
         return (0);

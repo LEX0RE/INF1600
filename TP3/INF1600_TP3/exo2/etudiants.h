@@ -6,7 +6,7 @@ class Etudiant
 { 
     private:
 
-        float tabnotes[10] ;
+        float tabnotes[10] ; 
 
         char nom[50], prenom[50];        
 

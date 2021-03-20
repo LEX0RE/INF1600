@@ -1,0 +1,18 @@
+Vtable for Etudiant
+Etudiant::_ZTV8Etudiant: 9 entries
+0     (int (*)(...))0
+8     (int (*)(...))(& _ZTI8Etudiant)
+16    (int (*)(...))Etudiant::saisie
+24    (int (*)(...))Etudiant::~Etudiant
+32    (int (*)(...))Etudiant::~Etudiant
+40    (int (*)(...))Etudiant::affichage
+48    (int (*)(...))Etudiant::moyenneasm
+56    (int (*)(...))Etudiant::admiscpp
+64    (int (*)(...))Etudiant::admisasm
+
+Class Etudiant
+   size=152 align=8
+   base size=148 base align=8
+Etudiant (0x0x7fe6eddce420) 0
+    vptr=((& Etudiant::_ZTV8Etudiant) + 16)
+
