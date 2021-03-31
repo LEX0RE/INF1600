@@ -28,7 +28,7 @@ architecture test of simple_risc_tb is
 begin
 
    UUT1 : simple_risc
-   generic map( inst_memory => program_0 ) -- CHARGER VOTRE PROGRAMME ICI -> program_1
+   generic map( inst_memory => program_1 ) -- CHARGER VOTRE PROGRAMME ICI -> program_1
    port map( rst => rst, clk => clk);
    
    clk <= not clk after period / 2;
