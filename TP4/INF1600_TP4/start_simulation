@@ -25,7 +25,7 @@ echo "Elaborating testbench UNIT"
 ghdl -e simple_risc_tb
 
 echo "Running simulation"
-ghdl -r simple_risc_tb --wave=new.ghw --stop-time=1000ns 
+ghdl -r simple_risc_tb --wave=new.ghw --stop-time=2000ns 
 
 echo "Cleaning files"
 ghdl --clean
