@@ -1,0 +1,37 @@
+[*]
+[*] GTKWave Analyzer v3.3.66 (w)1999-2015 BSI
+[*] Mon Mar 29 18:58:05 2021
+[*]
+[dumpfile] "/home/tarek/inf1600/tp5/new.ghw"
+[dumpfile_mtime] "Mon Mar 29 18:54:21 2021"
+[dumpfile_size] 469088
+[savefile] "/home/tarek/inf1600/tp5/simulation_wave.gtkw"
+[timestart] 0
+[size] 1718 875
+[pos] -1 -1
+*-26.000000 188200000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.simple_risc_tb.
+[treeopen] top.simple_risc_tb.uut1.
+[treeopen] top.simple_risc_tb.uut1.uc.
+[sst_width] 233
+[signals_width] 325
+[sst_expanded] 1
+[sst_vpaned_height] 242
+@28
+top.simple_risc_tb.uut1.rst
+top.simple_risc_tb.uut1.clk
+top.simple_risc_tb.uut1.pc
+top.simple_risc_tb.uut1.wpc
+@22
+#{top.simple_risc_tb.uut1.ir[27:0]} top.simple_risc_tb.uut1.ir[27] top.simple_risc_tb.uut1.ir[26] top.simple_risc_tb.uut1.ir[25] top.simple_risc_tb.uut1.ir[24] top.simple_risc_tb.uut1.ir[23] top.simple_risc_tb.uut1.ir[22] top.simple_risc_tb.uut1.ir[21] top.simple_risc_tb.uut1.ir[20] top.simple_risc_tb.uut1.ir[19] top.simple_risc_tb.uut1.ir[18] top.simple_risc_tb.uut1.ir[17] top.simple_risc_tb.uut1.ir[16] top.simple_risc_tb.uut1.ir[15] top.simple_risc_tb.uut1.ir[14] top.simple_risc_tb.uut1.ir[13] top.simple_risc_tb.uut1.ir[12] top.simple_risc_tb.uut1.ir[11] top.simple_risc_tb.uut1.ir[10] top.simple_risc_tb.uut1.ir[9] top.simple_risc_tb.uut1.ir[8] top.simple_risc_tb.uut1.ir[7] top.simple_risc_tb.uut1.ir[6] top.simple_risc_tb.uut1.ir[5] top.simple_risc_tb.uut1.ir[4] top.simple_risc_tb.uut1.ir[3] top.simple_risc_tb.uut1.ir[2] top.simple_risc_tb.uut1.ir[1] top.simple_risc_tb.uut1.ir[0]
+@28
+top.simple_risc_tb.uut1.wir
+@200
+-Unite de controle
+@28
+top.simple_risc_tb.uut1.uc.state
+@29
+top.simple_risc_tb.uut1.uc.inst
+[pattern_trace] 1
+[pattern_trace] 0
