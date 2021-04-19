@@ -15,10 +15,10 @@ package simple_risc_programs is
       x"8020200", -- r2    <- M[r2]        / addr x05
       x"8030300", -- r3    <- M[r3]        / addr x06
       x"8040400", -- r4    <- M[r4]        / addr x07
-      x"8050100", -- r5    <- M[r1]        / addr x08
-      x"3040400", -- r4    <- r4 << 1      / addr x09
-      x"0040405", -- r4    <- r4 + r5      / addr x0A
-      x"0010100", -- r1    <- r1 + r0      / addr x0B
+      x"3040400", -- r4    <- r4 << 1      / addr x08
+      x"8050100", -- r5    <- M[r1]        / addr x09
+      x"0010100", -- r1    <- r1 + r0      / addr x0A
+      x"0040405", -- r4    <- r4 + r5      / addr x0B
       x"0030302", -- r3    <- r3 + r2      / addr x0C
       x"C020008", -- jnz 0x08              / addr x0D
       x"9000104", -- M[r1] <- r4           / addr x0E
