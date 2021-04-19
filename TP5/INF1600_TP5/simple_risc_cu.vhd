@@ -60,15 +60,13 @@ begin
                   when inst_alu       => state <= fetch;
                   when inst_read_mem  => state <= read_mem;
                   when inst_write_mem => state <= fetch;
-                  when inst_loadi     => state <= ldi;
+                  when inst_loadi     => state <= fetch;
                   when inst_branch    => state <= jump;
                   when inst_stop      => state <= stop;
                   when others         => state <= stop;
                end case;
             when read_mem =>
-               --if( rmem_confirmed = '1' ) then
                   state <= fetch;
-               --end if;
             when write_mem =>
                if( wmem_confirmed = '1' ) then
                   state <= fetch;
@@ -103,7 +101,7 @@ begin
    --
    -- *******************************************************************
    -- A modifier
-   process( state, s_op_ual, rmem_confirmed ) is
+   process( state, s_op_ldi, s_op_ual, rmem_confirmed ) is
    begin
       wFLAG <= '0';
       if( s_op_ual = '1' ) then
@@ -113,7 +111,7 @@ begin
       elsif( rmem_confirmed = '1' ) then
          choixSource <= 1;
          wreg        <= '1';
-      elsif( state = ldi ) then
+      elsif( s_op_ldi = '1' ) then
          choixSource <= 2;
          wreg        <= '1';
       else
