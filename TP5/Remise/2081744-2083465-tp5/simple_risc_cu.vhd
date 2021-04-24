@@ -46,6 +46,7 @@ begin
    begin
       if rst = '1' then
          state    <= start;
+         wIR      <=  '1';
          fetched  <=  '0';
       elsif rising_edge(clk) then
          fetched  <=  '0';
@@ -60,15 +61,13 @@ begin
                   when inst_alu       => state <= fetch;
                   when inst_read_mem  => state <= read_mem;
                   when inst_write_mem => state <= fetch;
-                  when inst_loadi     => state <= ldi;
+                  when inst_loadi     => state <= fetch;
                   when inst_branch    => state <= jump;
                   when inst_stop      => state <= stop;
                   when others         => state <= stop;
                end case;
             when read_mem =>
-               --if( rmem_confirmed = '1' ) then
-                  state <= fetch;
-               --end if;
+               state <= fetch;
             when write_mem =>
                if( wmem_confirmed = '1' ) then
                   state <= fetch;
@@ -82,6 +81,24 @@ begin
             when others =>
                state <= start;
          end case;
+      elsif clk'event then
+         case state is
+            when decode =>
+               case inst is
+                  when inst_alu       => wIR <= '1';
+                  when inst_write_mem => wIR <= '1';
+                  when inst_loadi     => wIR <= '1';
+                  when others         => wIR <= '0';
+               end case;
+            when jump =>
+               wIR <= '1';
+            when read_mem =>
+               wIR <= '1';
+            when stop =>
+               wIR <= '1';
+            when others =>
+               wIR <= '0';
+         end case;
       end if;
    end process;
    
@@ -91,7 +108,7 @@ begin
       if rst = '1' then
          wmem <= '0';
          rmem <= '0';
-      elsif rising_edge(clk) then
+      elsif clk'event then
          wmem <= s_op_wmem;
          rmem <= s_op_rmem;
       end if;
@@ -103,17 +120,17 @@ begin
    --
    -- *******************************************************************
    -- A modifier
-   process( state, s_op_ual, rmem_confirmed ) is
+   process( state, s_op_ldi, s_op_ual) is
    begin
       wFLAG <= '0';
       if( s_op_ual = '1' ) then
          choixSource <= 0;
          wreg        <= '1';
          wFLAG       <= '1';
-      elsif( rmem_confirmed = '1' ) then
+      elsif(s_op_rmem = '1') then
          choixSource <= 1;
          wreg        <= '1';
-      elsif( state = ldi ) then
+      elsif( s_op_ldi = '1' ) then
          choixSource <= 2;
          wreg        <= '1';
       else
@@ -167,14 +184,12 @@ begin
       end if;
    end process;
    
-   wIR <= '1' when state = fetch else '0';
-   
    process( state, Z, N )is
    begin
       if( state = fetch )then
          wPC      <= '1';
          doBranch <= '0';
-      elsif( state = jump ) then
+      elsif( state = decode and inst = inst_branch ) then
          if ( jmp = br ) or               -- branchement sans condition
             ( jmp = brz  and Z = '1' ) or -- si = 0
             ( jmp = brnz and Z = '0' ) or -- si /= 0
